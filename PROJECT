@@ -1,0 +1,7 @@
+domain: cvte.com
+repo: github.com/nic-6443/oomkill-protector
+resources:
+- group: psdcloud
+  kind: OOMKillProtector
+  version: v1
+version: "2"

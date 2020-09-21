@@ -1,0 +1,12 @@
+apiVersion: psdcloud.cvte.com/v1
+kind: OOMKillProtector
+metadata:
+  namespace: 3104edae966bc5b28d5f624b620129c64eea9593-dev-dev
+  name: oomkillprotector-sample
+spec:
+  selector:
+    biz-app-id-v2: "0d36bc9599d33dabe88e036b9b5106ccc7184a97"
+    biz-app-version-num: "1"
+  containerName: container
+  thresholdRatio: 95
+  scalaRatio: 150

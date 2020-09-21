@@ -1,0 +1,77 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.5
+  creationTimestamp: null
+  name: oomkillprotectors.psdcloud.cvte.com
+spec:
+  group: psdcloud.cvte.com
+  names:
+    kind: OOMKillProtector
+    listKind: OOMKillProtectorList
+    plural: oomkillprotectors
+    singular: oomkillprotector
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      description: OOMKillProtector is the Schema for the oomkillprotectors API
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: OOMKillProtectorSpec defines the desired state of OOMKillProtector
+          properties:
+            containerName:
+              type: string
+            scalaRatio:
+              format: int32
+              maximum: 300
+              minimum: 100
+              type: integer
+            selector:
+              additionalProperties:
+                type: string
+              type: object
+            thresholdRatio:
+              format: int32
+              maximum: 100
+              minimum: 70
+              type: integer
+          type: object
+        status:
+          description: OOMKillProtectorStatus defines the observed state of OOMKillProtector
+          properties:
+            protectStatus:
+              enum:
+              - Init
+              - UnderProtected
+              type: string
+            statusUpdateTime:
+              format: date-time
+              type: string
+          type: object
+      type: object
+  version: v1
+  versions:
+  - name: v1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
