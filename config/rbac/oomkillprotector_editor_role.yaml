@@ -1,0 +1,24 @@
+# permissions for end users to edit oomkillprotectors.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: oomkillprotector-editor-role
+rules:
+- apiGroups:
+  - psdcloud.cvte.com
+  resources:
+  - oomkillprotectors
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - psdcloud.cvte.com
+  resources:
+  - oomkillprotectors/status
+  verbs:
+  - get
